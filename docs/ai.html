@@ -1,0 +1,206 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>AI Tech Portfolio Tracker</title>
+            <style>
+                body { font-family: 'Segoe UI', Arial, sans-serif; padding: 20px; background: #f8f9fa; color: #333; }
+                h1, h2 { color: #2c3e50; }
+                .dashboard-header { background-color: #2c3e50; color: white; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
+                .dashboard-section { background: white; padding: 20px; border-radius: 5px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+                table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+                th, td { border: 1px solid #ddd; padding: 12px 8px; text-align: left; }
+                th { background-color: #2c3e50; color: white; }
+                tr:nth-child(even) { background-color: #f2f2f2; }
+                .chart-container { display: flex; flex-wrap: wrap; justify-content: space-between; }
+                .chart { flex: 0 0 48%; margin-bottom: 20px; background: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+                .chart img { max-width: 100%; height: auto; }
+                .positive { color: green; }
+                .negative { color: red; }
+                .insights { background-color: #f0f7ff; padding: 15px; border-left: 5px solid #3498db; margin-bottom: 20px; }
+                .footer { text-align: center; margin-top: 30px; font-size: 0.9em; color: #7f8c8d; }
+                @media (max-width: 768px) {
+                    .chart { flex: 0 0 100%; }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="dashboard-header">
+                <h1>AI Tech Portfolio Tracker</h1>
+                <p>Real-time tracking and analysis of AI technology investments</p>
+            </div>
+            
+            <div class="dashboard-section">
+                <h2>Portfolio Summary</h2>
+                <p>Last Updated: 2025-08-27 22:10:43</p>
+                <p>Total Portfolio Value: <strong>$166,292.45</strong> | 
+                   Overall Performance: <strong class="positive">
+                   +1.68%</strong></p>
+                
+                <div class="insights">
+                    <h3>Key Insights</h3>
+                    <ul><li>Portfolio value: $166,292.45, Performance: +1.68%</li><li>Top performers: TSLA (+10.23%), META (+8.47%), ASML (+5.79%)</li><li>Underperformers: SNOW (-11.77%), CRM (-7.96%), MSFT (-2.02%)</li><li>Best category: Applications (+9.35%), 23.4% of portfolio</li><li>AI high potential: TSM (AI score: 10.0, 3m: +22.97%), NVDA (AI score: 10.0, 3m: +32.32%)</li></ul>
+                </div>
+            </div>
+            
+            <div class="dashboard-section">
+                <h2>Portfolio Holdings</h2>
+                <table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Symbol</th>
+      <th>Company</th>
+      <th>Shares</th>
+      <th>Current_Price</th>
+      <th>Market_Value</th>
+      <th>Gain_Loss_Pct</th>
+      <th>Week_Change_Pct</th>
+      <th>Category</th>
+      <th>Region</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MSFT</td>
+      <td>Microsoft Corporation</td>
+      <td>75</td>
+      <td>$502.04</td>
+      <td>$37,653.00</td>
+      <td>-2.02%</td>
+      <td>-0.56%</td>
+      <td>Software_Platforms</td>
+      <td>US</td>
+    </tr>
+    <tr>
+      <td>META</td>
+      <td>Meta Platforms, Inc.</td>
+      <td>40</td>
+      <td>$754.10</td>
+      <td>$30,164.00</td>
+      <td>+8.47%</td>
+      <td>+0.85%</td>
+      <td>Applications</td>
+      <td>US</td>
+    </tr>
+    <tr>
+      <td>TSM</td>
+      <td>Taiwan Semiconductor Manufactur</td>
+      <td>100</td>
+      <td>$238.72</td>
+      <td>$23,872.00</td>
+      <td>-1.72%</td>
+      <td>+4.43%</td>
+      <td>Infrastructure</td>
+      <td>Asia</td>
+    </tr>
+    <tr>
+      <td>ASML</td>
+      <td>ASML Holding N.V. - New York Re</td>
+      <td>25</td>
+      <td>$763.20</td>
+      <td>$19,080.00</td>
+      <td>+5.79%</td>
+      <td>+1.83%</td>
+      <td>Infrastructure</td>
+      <td>Europe</td>
+    </tr>
+    <tr>
+      <td>PLTR</td>
+      <td>Palantir Technologies Inc.</td>
+      <td>100</td>
+      <td>$160.87</td>
+      <td>$16,087.00</td>
+      <td>+1.42%</td>
+      <td>+3.12%</td>
+      <td>Emerging_AI</td>
+      <td>US</td>
+    </tr>
+    <tr>
+      <td>GOOGL</td>
+      <td>Alphabet Inc.</td>
+      <td>50</td>
+      <td>$207.14</td>
+      <td>$10,357.00</td>
+      <td>+5.40%</td>
+      <td>+3.92%</td>
+      <td>Software_Platforms</td>
+      <td>US</td>
+    </tr>
+    <tr>
+      <td>NVDA</td>
+      <td>NVIDIA Corporation</td>
+      <td>50</td>
+      <td>$181.77</td>
+      <td>$9,088.50</td>
+      <td>+1.39%</td>
+      <td>+3.63%</td>
+      <td>Infrastructure</td>
+      <td>US</td>
+    </tr>
+    <tr>
+      <td>TSLA</td>
+      <td>Tesla, Inc.</td>
+      <td>25</td>
+      <td>$351.67</td>
+      <td>$8,791.75</td>
+      <td>+10.23%</td>
+      <td>+8.57%</td>
+      <td>Applications</td>
+      <td>US</td>
+    </tr>
+    <tr>
+      <td>CRM</td>
+      <td>Salesforce, Inc.</td>
+      <td>30</td>
+      <td>$243.74</td>
+      <td>$7,312.20</td>
+      <td>-7.96%</td>
+      <td>-1.10%</td>
+      <td>Software_Platforms</td>
+      <td>US</td>
+    </tr>
+    <tr>
+      <td>SNOW</td>
+      <td>Snowflake Inc.</td>
+      <td>20</td>
+      <td>$194.35</td>
+      <td>$3,887.00</td>
+      <td>-11.77%</td>
+      <td>-0.23%</td>
+      <td>Emerging_AI</td>
+      <td>US</td>
+    </tr>
+  </tbody>
+</table>
+            </div>
+            
+            <div class="dashboard-section">
+                <h2>Portfolio Analysis</h2>
+                
+                <div class="chart-container">
+                    <div class="chart">
+                        <h3>AI Relevance Ranking</h3>
+                        <img src="charts/ai_portfolio_analysis.png" alt="AI Portfolio Analysis">
+                    </div>
+                    
+                    <div class="chart">
+                        <h3>Performance Comparison</h3>
+                        <img src="charts/performance_comparison.png" alt="Performance Comparison">
+                    </div>
+                    
+                    <div class="chart">
+                        <h3>Portfolio Allocation</h3>
+                        <img src="charts/category_allocation.png" alt="Category Allocation">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p><a href="https://zodiac6k.github.io/ESG/">← Back to ESG Dashboard</a></p>
+                <p>Powered by AI Tech Portfolio Tracker | Data sourced from Yahoo Finance</p>
+                <p>© 2025 AI Portfolio Analytics</p>
+            </div>
+        </body>
+        </html>
+        
