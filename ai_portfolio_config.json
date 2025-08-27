@@ -1,0 +1,55 @@
+{
+  "portfolio": {
+    "TSM": {
+      "shares": 100,
+      "category": "Infrastructure",
+      "region": "Asia"
+    },
+    "ASML": {
+      "shares": 25,
+      "category": "Infrastructure",
+      "region": "Europe"
+    },
+    "NVDA": {
+      "shares": 50,
+      "category": "Infrastructure",
+      "region": "US"
+    },
+    "MSFT": {
+      "shares": 75,
+      "category": "Software_Platforms",
+      "region": "US"
+    },
+    "GOOGL": {
+      "shares": 50,
+      "category": "Software_Platforms",
+      "region": "US"
+    },
+    "CRM": {
+      "shares": 30,
+      "category": "Software_Platforms",
+      "region": "US"
+    },
+    "META": {
+      "shares": 40,
+      "category": "Applications",
+      "region": "US"
+    },
+    "TSLA": {
+      "shares": 25,
+      "category": "Applications",
+      "region": "US"
+    },
+    "PLTR": {
+      "shares": 100,
+      "category": "Emerging_AI",
+      "region": "US"
+    },
+    "SNOW": {
+      "shares": 20,
+      "category": "Emerging_AI",
+      "region": "US"
+    }
+  },
+  "last_updated": "2025-08-27T22:45:11.444523"
+}

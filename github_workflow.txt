@@ -1,0 +1,246 @@
+name: AI Portfolio Tracker
+
+on:
+  schedule:
+    # Run every weekday at 9:30 AM UTC (after market open)
+    - cron: '30 9 * * 1-5'
+  workflow_dispatch: # Allow manual trigger
+  push:
+    branches: [ main ]
+    paths:
+      - 'ai_portfolio_config.json'
+
+jobs:
+  track-portfolio:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+          
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Create output directories
+      run: |
+        mkdir -p reports
+        mkdir -p visualizations
+        
+    - name: Run portfolio analysis
+      env:
+        PYTHONPATH: ${{ github.workspace }}
+      run: |
+        python -c "
+        from ai_portfolio_tracker import AITechPortfolioTracker
+        import os
+        import shutil
+        from datetime import datetime
+        
+        print('🚀 Starting automated portfolio analysis...')
+        
+        try:
+            # Initialize tracker
+            tracker = AITechPortfolioTracker()
+            
+            # Run analysis
+            metrics, growth_analysis, insights = tracker.run_full_analysis()
+            
+            # Move generated files to organized directories
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            
+            # Move reports
+            for file in os.listdir('.'):
+                if file.startswith('ai_portfolio_report_'):
+                    shutil.move(file, f'reports/{file}')
+                elif file.startswith('ai_portfolio_holdings_'):
+                    shutil.move(file, f'reports/{file}')
+                elif file.endswith('.png'):
+                    shutil.move(file, f'visualizations/{file}')
+            
+            print('✅ Portfolio analysis completed successfully')
+            
+        except Exception as e:
+            print(f'❌ Error during analysis: {str(e)}')
+            raise e
+        "
+        
+    - name: Run advanced analytics
+      if: success()
+      run: |
+        python -c "
+        from ai_portfolio_tracker import AITechPortfolioTracker
+        from advanced_analytics import run_advanced_analysis
+        import os
+        import shutil
+        
+        try:
+            tracker = AITechPortfolioTracker()
+            tracker.fetch_stock_data()
+            
+            # Run advanced analysis
+            advanced = run_advanced_analysis(tracker)
+            
+            # Move advanced reports
+            for file in os.listdir('.'):
+                if file.startswith('advanced_ai_portfolio_'):
+                    shutil.move(file, f'reports/{file}')
+                elif file == 'advanced_portfolio_analysis.png':
+                    shutil.move(file, f'visualizations/{file}')
+            
+            print('✅ Advanced analytics completed')
+            
+        except Exception as e:
+            print(f'⚠️ Advanced analytics failed: {str(e)}')
+            # Don't fail the entire workflow for advanced analytics
+        "
+        
+    - name: Generate summary report
+      if: success()
+      run: |
+        python -c "
+        import json
+        import os
+        from datetime import datetime
+        
+        # Create workflow summary
+        summary = {
+            'workflow_run': {
+                'timestamp': datetime.now().isoformat(),
+                'status': 'completed',
+                'reports_generated': len([f for f in os.listdir('reports/') if f.endswith('.json')]),
+                'visualizations_generated': len([f for f in os.listdir('visualizations/') if f.endswith('.png')])
+            }
+        }
+        
+        with open('reports/workflow_summary.json', 'w') as f:
+            json.dump(summary, f, indent=4)
+        
+        print('📋 Workflow summary created')
+        "
+        
+    - name: Upload reports as artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: portfolio-reports-${{ github.run_number }}
+        path: reports/
+        retention-days: 30
+        
+    - name: Upload visualizations as artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: portfolio-visualizations-${{ github.run_number }}
+        path: visualizations/
+        retention-days: 30
+        
+    - name: Commit updated reports (optional)
+      if: success() && github.ref == 'refs/heads/main'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Add only the latest reports (avoid repo bloat)
+        git add reports/workflow_summary.json
+        
+        # Check if there are changes to commit
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Auto-update portfolio tracking reports [skip ci]"
+          git push
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Create issue on failure
+      if: failure()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: 'Portfolio Tracker Failed - ' + new Date().toISOString().split('T')[0],
+            body: `The automated portfolio tracking workflow failed.
+            
+            **Workflow Run:** ${{ github.run_id }}
+            **Branch:** ${{ github.ref }}
+            **Commit:** ${{ github.sha }}
+            
+            Please check the workflow logs for details.`,
+            labels: ['bug', 'automation']
+          })
+
+  weekly-report:
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '30 9 * * 1' # Only on Mondays
+    needs: track-portfolio
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Generate weekly summary
+      run: |
+        python -c "
+        from ai_portfolio_tracker import AITechPortfolioTracker
+        import json
+        from datetime import datetime, timedelta
+        
+        print('📊 Generating weekly portfolio summary...')
+        
+        try:
+            tracker = AITechPortfolioTracker()
+            metrics, growth_analysis, insights = tracker.run_full_analysis()
+            
+            # Create weekly summary
+            weekly_summary = {
+                'week_ending': datetime.now().isoformat(),
+                'portfolio_value': metrics['total_value'],
+                'weekly_performance': metrics['total_gain_loss_pct'],
+                'top_performers': metrics['portfolio_df'].nlargest(3, 'Gain_Loss_Pct')[['Symbol', 'Gain_Loss_Pct']].to_dict('records'),
+                'key_insights': insights[:5],  # Top 5 insights
+                'ai_trend_summary': 'AI sector showing strong momentum across infrastructure and software platforms'
+            }
+            
+            with open('weekly_portfolio_summary.json', 'w') as f:
+                json.dump(weekly_summary, f, indent=4, default=str)
+                
+            print('✅ Weekly summary generated')
+            
+        except Exception as e:
+            print(f'❌ Weekly summary failed: {str(e)}')
+            raise e
+        "
+        
+    - name: Upload weekly summary
+      uses: actions/upload-artifact@v3
+      with:
+        name: weekly-summary-${{ github.run_number }}
+        path: weekly_portfolio_summary.json

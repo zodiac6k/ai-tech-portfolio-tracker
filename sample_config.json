@@ -1,0 +1,118 @@
+{
+    "portfolio": {
+        "TSM": {
+            "shares": 100,
+            "category": "Infrastructure",
+            "region": "Asia",
+            "notes": "Leading AI chip manufacturer, 3nm process leader"
+        },
+        "ASML": {
+            "shares": 25,
+            "category": "Infrastructure",
+            "region": "Europe",
+            "notes": "EUV lithography monopoly, critical for advanced chips"
+        },
+        "NVDA": {
+            "shares": 50,
+            "category": "Infrastructure",
+            "region": "US",
+            "notes": "AI training and inference chip leader"
+        },
+        "MSFT": {
+            "shares": 75,
+            "category": "Software_Platforms",
+            "region": "US",
+            "notes": "Azure AI services, OpenAI partnership"
+        },
+        "GOOGL": {
+            "shares": 50,
+            "category": "Software_Platforms",
+            "region": "US",
+            "notes": "AI research leader, TensorFlow, Bard AI"
+        },
+        "CRM": {
+            "shares": 30,
+            "category": "Software_Platforms",
+            "region": "US",
+            "notes": "AI-powered CRM, Einstein AI platform"
+        },
+        "META": {
+            "shares": 40,
+            "category": "Applications",
+            "region": "US",
+            "notes": "AI-driven social media, VR/AR metaverse"
+        },
+        "TSLA": {
+            "shares": 25,
+            "category": "Applications",
+            "region": "US",
+            "notes": "Autonomous driving, robotics, AI hardware"
+        },
+        "PLTR": {
+            "shares": 100,
+            "category": "Emerging_AI",
+            "region": "US",
+            "notes": "AI analytics, government and enterprise data"
+        },
+        "SNOW": {
+            "shares": 20,
+            "category": "Emerging_AI",
+            "region": "US",
+            "notes": "Data cloud platform with AI/ML capabilities"
+        },
+        "ARM": {
+            "shares": 75,
+            "category": "Infrastructure",
+            "region": "US",
+            "notes": "CPU architecture for mobile and AI edge computing"
+        },
+        "AMD": {
+            "shares": 60,
+            "category": "Infrastructure",
+            "region": "US",
+            "notes": "AI accelerators, data center GPUs"
+        },
+        "SAP": {
+            "shares": 40,
+            "category": "Software_Platforms",
+            "region": "Europe",
+            "notes": "Enterprise AI solutions, intelligent ERP"
+        },
+        "ADYEN.AS": {
+            "shares": 15,
+            "category": "Applications",
+            "region": "Europe",
+            "notes": "AI-powered payment processing and fraud detection"
+        },
+        "6758.T": {
+            "shares": 200,
+            "category": "Infrastructure",
+            "region": "Asia",
+            "notes": "Sony - AI sensors, imaging technology"
+        }
+    },
+    "watchlist": {
+        "AI": "C3.ai - Pure play AI software",
+        "SMCI": "Super Micro Computer - AI server infrastructure",
+        "DDOG": "Datadog - AI-powered monitoring",
+        "U": "Unity - AI-powered game development",
+        "RBLX": "Roblox - AI-driven gaming platform",
+        "ZS": "Zscaler - AI cybersecurity",
+        "000660.KS": "SK Hynix - Memory for AI applications",
+        "IFX.DE": "Infineon - Automotive AI chips"
+    },
+    "risk_settings": {
+        "max_single_position": 15.0,
+        "max_sector_allocation": 40.0,
+        "max_region_allocation": 60.0,
+        "volatility_threshold": 40.0,
+        "rebalance_threshold": 5.0
+    },
+    "ai_scoring_weights": {
+        "revenue_from_ai": 0.3,
+        "ai_rd_investment": 0.25,
+        "ai_partnerships": 0.2,
+        "market_position": 0.15,
+        "growth_potential": 0.1
+    },
+    "last_updated": "2025-01-15T10:30:00.000Z"
