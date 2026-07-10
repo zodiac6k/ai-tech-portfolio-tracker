@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNB FCNR Leverage Return Tracker</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background: #faf6ef; color: #333; }
+        .header { background: linear-gradient(90deg, #6b0f1a 0%, #8b1a2b 60%, #d4a017 100%); color: #fff; padding: 28px 24px; }
+        .header h1 { margin: 0; font-size: 1.9rem; letter-spacing: 0.5px; }
+        .header p { margin: 6px 0 0; opacity: 0.9; }
+        .wrap { padding: 24px; }
+        .insights { background: #fff8ec; border-left: 5px solid #d4a017; padding: 16px 20px; border-radius: 6px; margin-bottom: 24px; }
+        .insights h2 { margin-top: 0; color: #6b0f1a; }
+        table { border-collapse: collapse; width: 100%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.08); border-radius: 6px; overflow: hidden; }
+        th, td { padding: 10px 12px; text-align: right; border-bottom: 1px solid #eee; font-size: 0.9rem; white-space: nowrap; }
+        th { background: #6b0f1a; color: #fff; text-align: right; }
+        td:nth-child(2), th:nth-child(2) { text-align: left; }
+        .yield { font-weight: bold; color: #6b0f1a; }
+        .table-scroll { overflow-x: auto; }
+        .footer { text-align: center; color: #8a7f6a; font-size: 0.85rem; margin-top: 24px; }
+        .disclaimer { font-size: 0.8rem; color: #8a7f6a; margin-top: 12px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>PNB FCNR Leverage Return Tracker</h1>
+        <p>Foreign Currency Non-Resident deposit leverage strategy &middot; USD &middot; semi-annual compounding</p>
+    </div>
+    <div class="wrap">
+        <div class="insights">
+            <h2>Key Insights</h2>
+            <ul><li>Best annualised yield: 15.71% (5Y, FCNR >= USD 1 MN).</li><li>Lowest annualised yield: 11.34% (3Y, FCNR < USD 1 MN).</li><li>Average annualised yield across 6 scenarios: 13.29%.</li><li>Aggregate illustrative net return: $262,324.</li><li>Higher deposit tiers (>= USD 1 MN) consistently out-yield the sub-1 MN tier at the same tenor, driven by a wider FD-vs-loan rate spread.</li></ul>
+        </div>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Tenor</th><th>Tier</th><th>Margin</th>
+                    <th>FD Amt</th><th>FD Rate</th><th>FD Maturity</th>
+                    <th>Loan Amt</th><th>Loan Rate</th><th>Loan+Int</th>
+                    <th>Difference</th><th>Net Return</th><th>Annualised Yield</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>5Y</td>
+                <td>FCNR < USD 1 MN</td>
+                <td>$60,000</td>
+                <td>$600,000</td>
+                <td>6.50%</td>
+                <td>$830,014</td>
+                <td>$540,000</td>
+                <td>5.90%</td>
+                <td>$725,194</td>
+                <td>$104,820</td>
+                <td>$44,820</td>
+                <td class="yield">14.94%</td>
+            </tr>
+            <tr>
+                <td>5Y</td>
+                <td>FCNR >= USD 1 MN</td>
+                <td>$100,000</td>
+                <td>$1,000,000</td>
+                <td>6.60%</td>
+                <td>$1,390,171</td>
+                <td>$900,000</td>
+                <td>5.95%</td>
+                <td>$1,211,637</td>
+                <td>$178,534</td>
+                <td>$78,534</td>
+                <td class="yield">15.71%</td>
+            </tr>
+            <tr>
+                <td>4Y</td>
+                <td>FCNR < USD 1 MN</td>
+                <td>$60,000</td>
+                <td>$600,000</td>
+                <td>6.45%</td>
+                <td>$776,356</td>
+                <td>$540,000</td>
+                <td>5.95%</td>
+                <td>$685,033</td>
+                <td>$91,323</td>
+                <td>$31,323</td>
+                <td class="yield">13.05%</td>
+            </tr>
+            <tr>
+                <td>4Y</td>
+                <td>FCNR >= USD 1 MN</td>
+                <td>$100,000</td>
+                <td>$1,000,000</td>
+                <td>6.55%</td>
+                <td>$1,299,025</td>
+                <td>$900,000</td>
+                <td>6.05%</td>
+                <td>$1,146,227</td>
+                <td>$152,798</td>
+                <td>$52,798</td>
+                <td class="yield">13.20%</td>
+            </tr>
+            <tr>
+                <td>3Y</td>
+                <td>FCNR < USD 1 MN</td>
+                <td>$60,000</td>
+                <td>$600,000</td>
+                <td>6.40%</td>
+                <td>$726,880</td>
+                <td>$540,000</td>
+                <td>6.00%</td>
+                <td>$646,459</td>
+                <td>$80,421</td>
+                <td>$20,421</td>
+                <td class="yield">11.34%</td>
+            </tr>
+            <tr>
+                <td>3Y</td>
+                <td>FCNR >= USD 1 MN</td>
+                <td>$100,000</td>
+                <td>$1,000,000</td>
+                <td>6.50%</td>
+                <td>$1,215,047</td>
+                <td>$900,000</td>
+                <td>6.10%</td>
+                <td>$1,080,619</td>
+                <td>$134,428</td>
+                <td>$34,428</td>
+                <td class="yield">11.48%</td>
+            </tr></tbody>
+        </table>
+        </div>
+        <p class="disclaimer">Disclaimer: Illustrative calculation based on semi-annual compounding.
+        Figures are indicative and do not constitute financial advice.</p>
+        <div class="footer">
+            <p>PNB FCNR Leverage Return Tracker &middot; Last updated: 2026-07-10 18:13:49</p>
+        </div>
+    </div>
+</body>
+</html>
